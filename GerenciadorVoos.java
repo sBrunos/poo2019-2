@@ -1,4 +1,12 @@
-import java.util.ArrayList;
+package pucrs.myflight.modelo;
+
+public class GerenciadorVoos {
+
+}
+
+
+
+/*import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class GerenciadorVoos
@@ -18,5 +26,5 @@ public class GerenciadorVoos
     }
     
 }
-
+*/
 
