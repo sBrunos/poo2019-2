@@ -10,7 +10,7 @@ public class App {
 
 
        //criação de rota
-		CiaAerea cia = new CiaAerea("Latam");
+		CiaAerea cia = new CiaAerea("1235","Latam");
 		//Localização do aeroporto de Porto Alegre
 		Geo geoOrigem = new Geo(-29.9939, -51.1711);
 		//Localização do aeroporto de Guarulhos
@@ -41,12 +41,8 @@ public class App {
 
 		double distancia = geoOrigem.distanciaAtual(geoDestino);
 
-		
-		
-
-		//Falta implementar os outros ToStrings
-		//
 		System.out.println(rotaFinal.toString());
+		System.out.println("Total de empresas: "+CiaAerea.getTotalCias());
 	}
 
 
