@@ -1,6 +1,7 @@
 package pucrs.myflight.modelo;
 
-public class Aeronave {
+public class Aeronave implements Imprimivel{
+
 	private String codigo;
 	private String descricao;
 	private String capacidade;
@@ -23,7 +24,18 @@ public class Aeronave {
 		return capacidade;
 	}
 
+	public void getTotalCias() {
+		System.out.println(codigo + " - " + descricao);
+	}
+
+	@Override
 	public String toString() {
 		return codigo + " - " + descricao + " (" + capacidade + ")";
 	}
+
+	@Override
+	public void imprimir() {
+		System.out.println(toString());
+	}
+
 }
