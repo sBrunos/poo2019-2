@@ -1,6 +1,6 @@
 package pucrs.myflight.modelo;
 
-public class Aeroporto {
+public class Aeroporto implements Comparable<Aeroporto>
 	private String codigo;
 	private String nome;
 	private Geo loc;
@@ -26,5 +26,10 @@ public class Aeroporto {
 	@Override
 	public String toString() {
 		return codigo + " - " + nome + " [" + loc + "]";
+	}
+
+	@Override
+	public int compareTo(Aeroporto outro) {
+		return this.nome.compareTo(outro.nome);
 	}
 }
