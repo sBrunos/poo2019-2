@@ -1,7 +1,6 @@
 package pucrs.myflight.modelo;
 
-public class Aeronave implements Imprimivel{
-
+public class Aeronave implements Imprimivel, Comparable<Aeronave> {
 	private String codigo;
 	private String descricao;
 	private String capacidade;
@@ -37,5 +36,12 @@ public class Aeronave implements Imprimivel{
 	public void imprimir() {
 		System.out.println(toString());
 	}
+	
+	// Comparação entre duas aeronaves (usado em Collections.sort()
+	@Override
+	public int compareTo(Aeronave outra) {
+		return descricao.compareTo(outra.descricao);
+	}
+}
 
 }
