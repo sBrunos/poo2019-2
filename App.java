@@ -27,24 +27,30 @@ public class App {
 		LocalDateTime datahora = LocalDateTime.of(2016, Month.AUGUST, 10, 8, 0);
 		Duration duracao = Duration.ofSeconds(3600);
 
-		//Forma com todos os parâmetros
-		Voo voo = new Voo(rota,datahora,duracao);
 
-		//Forma com a hora default
-		Voo vooHoraDefault = new Voo(rota, duracao);
-
+		Voo voo = new VooDireto(rota, datahora);
 
 		//criação do vooEscalas
-		Rota rotaFinal = new Rota(cia,origem,destino,aeronave);
-		VooEscalas vooEscalas = new VooEscalas(rota,rotaFinal, datahora ,duracao);
+		Rota rota2 = new Rota(cia,new Aeroporto("AA1","Teste 001", new Geo(21.0023, 52.3421)),
+				new Aeroporto("BB1","Teste 002", new Geo(-19.4332, -51.1873)),aeronave);
+		Rota rota3 = new Rota(cia,new Aeroporto("POA","Teste 003", new Geo(-32.8421, 16.3422)),
+				new Aeroporto("AA1","Teste 004", new Geo(45.3422, 12.2342)),aeronave);
+		Rota rota4 = new Rota(cia,new Aeroporto("POA","Teste 005", new Geo(-12.1322, 34.7832)),
+				new Aeroporto("BB2","Teste 006", new Geo()),aeronave);
+
+		VooEscalas vooEscalas = new VooEscalas(datahora);
+		vooEscalas.adicionarRota(rota2);
+		vooEscalas.adicionarRota(rota3);
+		vooEscalas.adicionarRota(rota4);
 
 
 		double distancia = geoOrigem.distanciaAtual(geoDestino);
 
 		System.out.println(rotaFinal.toString());
 		System.out.println("Total de empresas: "+CiaAerea.getTotalCias());
+
+		System.out.printLn(VooDireto);
+		System.out.printLn(VooEscalas);
 	}
-
-
 }
 

@@ -1,48 +1,62 @@
 package pucrs.myflight.modelo;
-
+import java.lang.Math;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-public class Voo {
+public class VooDireto extends Voo {
 
-	public enum Status { CONFIRMADO, ATRASADO, CANCELADO };
-	
-	private LocalDateTime datahora;
-//	private Duration duracao;
-//	private Rota rota;
-	private Status status;
+	private Rota rota;
 
-	public Voo( LocalDateTime dh ) {
-		this.datahora = datahora;
-		this.status = Status.CONFIRMADO; // default é confirmado
-	}
-
-	public Voo(Rota rota, LocalDateTime datahora, Duration duracao) {
+	public VooDireto(Rota rota, LocalDateTime datahora) {
+		super.(dh);
 		this.rota = rota;
-		this.datahora = datahora;
-		this.duracao = duracao;
 		this.status = Status.CONFIRMADO; // default é confirmado
-	}
-    
-    public Voo(Rota rota, Duration duracao){
-        this.rota = rota;
-        this.duracao = duracao;
-        this.datahora = LocalDateTime.of(2016, Month.AUGUST, 12, 12, 00, 00);
-        this.status = Status.CONFIRMADO;
     }
 
+	public Rota getRota() {
+		return rota;
+	}
 
-	public LocalDateTime getDataHora();
+	public Duration getDuracao() {
+		final int R = 6371;
 
-	public abstract Duration getDuracao();
+		double oLat= rota.getOrigem().getLocal().getLatitude();
+		double oLon= rota.getOrigem().getLocal().getLongitude();
+		double dLat= rota.getDestino().getLocal().getLatitude();
+		double dLon= rota.getDestino().getLocal().getLongitude();
 
-	public abstract Rota getRota();
+		double distancia = Math.sin(Math.toRadians(oLat)) * Math.sin(Math.toRadians(dLat)) + Math.cos(Math.toRadians(oLat)) * Math.cos(Math.toRadians(dLat)) * Math.cos(Math.toRadians(oLon - dLon));
+		distancia = Math.acos(distancia);
+		distancia = Math.toDegrees(distancia);
+		distancia = distancia * 60 * 1.1515 * 1.609344;
+
+		double tempo = 805 / distancia;
+		long segundos = (long) (tempo * 3600);
+
+		Duration duracao = Duration.ofSeconds(segundos);
+		duracao = duracao.plusMinutes(30);
+
+		return duracao;
+	}
 	
-	public abstract void setStatus();
+	public Status getStatus() {
+		return status;
+	}
+	
+	public void setStatus(Status novo) {
+		this.status = novo;
+	}
 
     @Override
-    public abstract String toString();
+    public String toString() {
+		try{
+			return "Rota: " + rota + "Data  e hora: " + super.getDataHora() + "Duracao: "+ this.getDuracao();
+		}
+			catch (Exception e) {
+			return "Houve um problema ao acessar a rota.";
+		}
+    }
 
 }
 
