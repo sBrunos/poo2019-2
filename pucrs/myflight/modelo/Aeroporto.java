@@ -1,6 +1,6 @@
 package pucrs.myflight.modelo;
 
-public class Aeroporto implements Comparable<Aeroporto>
+public class Aeroporto implements Comparable<Aeroporto>{
 	private String codigo;
 	private String nome;
 	private Geo loc;

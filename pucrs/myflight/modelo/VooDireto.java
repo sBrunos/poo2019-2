@@ -3,19 +3,25 @@ import java.lang.Math;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 public class VooDireto extends Voo {
 
 	private Rota rota;
 
-	public VooDireto(Rota rota, LocalDateTime datahora) {
-		super.(dh);
+	public VooDireto(Rota rota, LocalDateTime dh) {
+		super(dh);
 		this.rota = rota;
-		this.status = Status.CONFIRMADO; // default é confirmado
-    }
+		this.setStatus(Status.CONFIRMADO);
+	}
 
 	public Rota getRota() {
 		return rota;
+	}
+
+	@Override
+	public void setStatus(Status n) {
+		super.setStatus(n);
 	}
 
 	public Duration getDuracao() {
@@ -23,10 +29,10 @@ public class VooDireto extends Voo {
 
 		double oLat= rota.getOrigem().getLocal().getLatitude();
 		double oLon= rota.getOrigem().getLocal().getLongitude();
-		double dLat= rota.getDestino().getLocal().getLatitude();
-		double dLon= rota.getDestino().getLocal().getLongitude();
+		Geo geo = new Geo (oLat, oLon);
 
-		double distancia = Math.sin(Math.toRadians(oLat)) * Math.sin(Math.toRadians(dLat)) + Math.cos(Math.toRadians(oLat)) * Math.cos(Math.toRadians(dLat)) * Math.cos(Math.toRadians(oLon - dLon));
+		double distancia =  geo.distanciaAtual(rota.getDestino().getLocal());
+
 		distancia = Math.acos(distancia);
 		distancia = Math.toDegrees(distancia);
 		distancia = distancia * 60 * 1.1515 * 1.609344;
@@ -40,18 +46,10 @@ public class VooDireto extends Voo {
 		return duracao;
 	}
 	
-	public Status getStatus() {
-		return status;
-	}
-	
-	public void setStatus(Status novo) {
-		this.status = novo;
-	}
-
     @Override
     public String toString() {
 		try{
-			return "Rota: " + rota + "Data  e hora: " + super.getDataHora() + "Duracao: "+ this.getDuracao();
+			return "Rota: " + rota + " Data  e hora: " + super.getDataHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + " Duracao: "+super.formatDuration(this.getDuracao());
 		}
 			catch (Exception e) {
 			return "Houve um problema ao acessar a rota.";

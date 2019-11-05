@@ -2,7 +2,7 @@ package pucrs.myflight.modelo;
 
 public class GerenciadorAeroportos {
 
-   public void ordenarNomes() {
+   /*public void ordenarNomes() {
      Collections.sort(aeroportos);
    }
 
@@ -39,5 +39,5 @@ public class GerenciadorAeroportos {
         list.sort(Comparator.comparing(Aeroporto::getCodigo));
         return list;
     }
-
+*/
 }

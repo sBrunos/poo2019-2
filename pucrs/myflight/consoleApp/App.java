@@ -3,6 +3,7 @@ import pucrs.myflight.modelo.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 public class App {
 
@@ -24,7 +25,7 @@ public class App {
 
 
 		//Criação de voos das duas formas (Verificação)
-		LocalDateTime datahora = LocalDateTime.of(2016, Month.AUGUST, 10, 8, 0);
+		LocalDateTime datahora = LocalDateTime.now();
 		Duration duracao = Duration.ofSeconds(3600);
 
 
@@ -36,21 +37,21 @@ public class App {
 		Rota rota3 = new Rota(cia,new Aeroporto("POA","Teste 003", new Geo(-32.8421, 16.3422)),
 				new Aeroporto("AA1","Teste 004", new Geo(45.3422, 12.2342)),aeronave);
 		Rota rota4 = new Rota(cia,new Aeroporto("POA","Teste 005", new Geo(-12.1322, 34.7832)),
-				new Aeroporto("BB2","Teste 006", new Geo()),aeronave);
+				new Aeroporto("BB2","Teste 006", new Geo(23.5858, 16.6868)),aeronave);
 
 		VooEscalas vooEscalas = new VooEscalas(datahora);
 		vooEscalas.adicionarRota(rota2);
 		vooEscalas.adicionarRota(rota3);
 		vooEscalas.adicionarRota(rota4);
 
+		VooDireto vooDireto = new VooDireto(rota4, datahora);
 
 		double distancia = geoOrigem.distanciaAtual(geoDestino);
 
-		System.out.println(rotaFinal.toString());
 		System.out.println("Total de empresas: "+CiaAerea.getTotalCias());
 
-		System.out.printLn(VooDireto);
-		System.out.printLn(VooEscalas);
+		System.out.println(vooDireto.toString());
+		System.out.println(vooEscalas.toString());
 	}
 }
 
