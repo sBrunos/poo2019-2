@@ -30,6 +30,6 @@ public class Aeroporto implements Comparable<Aeroporto>{
 
 	@Override
 	public int compareTo(Aeroporto outro) {
-		return this.nome.compareTo(outro.nome);
+		return nome.compareTo(outro.nome);
 	}
 }

@@ -37,7 +37,5 @@ public class Rota implements Comparable<Rota> {
        }
 
   @Override
-  public int compareTo(Rota rota) {
-	return this.cia.getNome().compareTo(rota.cia.getNome());
-	}
+  public int compareTo(Rota rota) { return cia.getNome().compareTo(rota.cia.getNome()); }
 }
