@@ -12,6 +12,10 @@ public class App {
 
        //criação de rota
 		CiaAerea cia = new CiaAerea("1235","Latam");
+		CiaAerea cia2 = new CiaAerea("5321","Gol");
+		CiaAerea cia3 = new CiaAerea("7895","Azul");
+		CiaAerea cia4 = new CiaAerea("1235","Outra");
+
 		//Localização do aeroporto de Porto Alegre
 		Geo geoOrigem = new Geo(-29.9939, -51.1711);
 		//Localização do aeroporto de Guarulhos
@@ -34,9 +38,9 @@ public class App {
 		//criação do vooEscalas
 		Rota rota2 = new Rota(cia,new Aeroporto("AA1","Teste 001", new Geo(21.0023, 52.3421)),
 				new Aeroporto("BB1","Teste 002", new Geo(-19.4332, -51.1873)),aeronave);
-		Rota rota3 = new Rota(cia,new Aeroporto("POA","Teste 003", new Geo(-32.8421, 16.3422)),
+		Rota rota3 = new Rota(cia2,new Aeroporto("POA","Teste 001", new Geo(-32.8421, 16.3422)),
 				new Aeroporto("AA1","Teste 004", new Geo(45.3422, 12.2342)),aeronave);
-		Rota rota4 = new Rota(cia,new Aeroporto("POA","Teste 005", new Geo(-12.1322, 34.7832)),
+		Rota rota4 = new Rota(cia3,new Aeroporto("POA","Teste 005", new Geo(-12.1322, 34.7832)),
 				new Aeroporto("BB2","Teste 006", new Geo(23.5858, 16.6868)),aeronave);
 
 		VooEscalas vooEscalas = new VooEscalas(datahora);
@@ -52,6 +56,29 @@ public class App {
 
 		System.out.println(vooDireto.toString());
 		System.out.println(vooEscalas.toString());
+
+
+
+
+		GerenciadorRotas rotas = new GerenciadorRotas();
+
+		rotas.adicionar(rota);
+		rotas.adicionar(rota2);
+		rotas.adicionar(rota3);
+		rotas.adicionar(rota4);
+
+		rotas.ordenaCia();
+
+		System.out.println("Rotas ordenadas pelo nome da companhia aérea: " + rotas);
+
+		rotas.ordenaOrigem();
+
+		System.out.println("Rotas ordenadas pelo aeroporto de origem: " + rotas);
+
+		rotas.ordenaOrigemCia();
+
+		System.out.println("Rotas ordenadas pelo aeroporto de origem desempatadas pelo nome da companhia aérea: " + rotas);
+
 	}
 }
 

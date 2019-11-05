@@ -61,7 +61,7 @@ public class VooEscalas extends Voo
 
             if (rotas.size() > 1)
                 for (int i = 1; i < rotas.size(); i++) {
-                    retorno += "\n -> " + "Rota: " + rotas.get(i) + " Data  e hora: " + super.getDataHora().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+                    retorno += "\n-> " + "Rota: " + rotas.get(i) + " Data  e hora: " + super.getDataHora().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
                 }
 
             return retorno + "\n Duracao: " + super.formatDuration(this.getDuracao());
