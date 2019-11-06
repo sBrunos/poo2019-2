@@ -82,11 +82,24 @@ public class App {
 
 
 
+	/*	GerenciadorVoos voos = new GerenciadorVoos();
+		voos.inserirVoo(vooDireto);
+		voos.inserirVoo(voo);
+		voos.ordenarDataHora();
+
+
+		System.out.println("Ordenação por Data hora : "+ voos.toString());
+		System.out.println("Ordenação desempata por duração"+ voos.toString());
+
+		*/
+
 		GerenciadorVoos voos = new GerenciadorVoos();
 		voos.inserirVoo(vooDireto);
 		voos.inserirVoo(voo);
 		voos.ordenarDataHora();
-		System.out.println("Ordenação: "+ voos.toString());
+		voos.ordenaDataHoraDuracao();
+		System.out.println("Ordenação por Data hora : "+ voos);
+
 	}
 }
 

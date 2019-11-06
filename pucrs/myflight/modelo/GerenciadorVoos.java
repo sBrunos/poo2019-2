@@ -1,7 +1,4 @@
 package pucrs.myflight.modelo;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -20,38 +17,25 @@ public class GerenciadorVoos {
         voos.sort(Comparator.comparing(Voo::getDataHora));
     }
 
-    public void inserirVoo(Voo voos){
+    public void ordenaDataHoraDuracao() {
+
+        voos.sort(Comparator.comparing(Voo::getDataHora).thenComparing(Voo::getDuracao));
+    }
+
+
+    public void inserirVoo(Voo voos) {
 
         this.voos.add(voos);
+
     }
 
-    @Override
-    public String toString() {
-        return this.voos.toString();
+    public String toString(){
+        String voo = " ";
+
+        System.out.println( "\n Ordenação duração: \n"  );
+        for(int i = 0; i < voos.size(); i++){
+            voo += voos.get(i) +  "\n";
+        }
+        return voo + "\n Duracao: " + super.toString();
     }
 }
-
-
-
-/*import java.util.ArrayList;
-import java.time.LocalDate;
-
-public class GerenciadorVoos
-{
-   private ArrayList<Voo> cadastroVoos;
-   
-   public GerenciadorVoos(){
-   cadastroVoos = new ArrayList<Voo>(); 
-    }
-    
-    public void adicionar (Voo voo){
-    cadastroVoos.add (voo);
-    }
-    
-    public ArrayList<Voo> listarTodos(){
-    return cadastroVoos;
-    }
-    
-}
-*/
-
