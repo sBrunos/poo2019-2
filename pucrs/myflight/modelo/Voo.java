@@ -18,7 +18,7 @@ public abstract class Voo {
 
 	public LocalDateTime getDataHora() {
 
-		return this.datahora;
+		return datahora;
 
 	}
 

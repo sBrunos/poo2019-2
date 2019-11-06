@@ -77,8 +77,16 @@ public class App {
 
 		rotas.ordenaOrigemCia();
 
+
 		System.out.println("Rotas ordenadas pelo aeroporto de origem desempatadas pelo nome da companhia aérea: " + rotas);
 
+
+
+		GerenciadorVoos voos = new GerenciadorVoos();
+		voos.inserirVoo(vooDireto);
+		voos.inserirVoo(voo);
+		voos.ordenarDataHora();
+		System.out.println("Ordenação: "+ voos.toString());
 	}
 }
 
