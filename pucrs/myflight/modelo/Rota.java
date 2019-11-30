@@ -32,12 +32,10 @@ public class Rota implements Comparable<Rota> {
 
     @Override
     public String toString() {
-        return cia.getCodigo() + " - " + origem.getCodigo() + " -> " + destino.getCodigo()
-                + " ("  + aeronave.getCodigo() + ")";
+		return "CODIGO-CIA: " + cia.getCodigo() + " NOME: " + cia.getNome() + "\nAEROPORTO DE ORIGEM: " + origem.toString() + "\nAEROPORTO DE DESTINO: " + destino.toString();
+
        }
 
   @Override
-  public int compareTo(Rota rota) {
-	return this.cia.getNome().compareTo(rota.cia.getNome());
-	}
+  public int compareTo(Rota rota) { return cia.getNome().compareTo(rota.cia.getNome()); }
 }

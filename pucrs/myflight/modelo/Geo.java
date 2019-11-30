@@ -54,6 +54,6 @@ public class Geo {
 
 	@Override
 	public String toString() {
-		return super.toString()+ "Latitude"+ latitude + "longitude" + longitude;
+		return "Latitude: "+ latitude + " Longitude: " + longitude;
 	}
 }
